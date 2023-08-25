@@ -2,18 +2,21 @@
 
 import usePageBottom from "@/hooks/usePageBottom";
 import usePoke from "@/hooks/usePoke";
+import { useEffect } from 'react';
 
 export default function Main() {
   const reachedBottom = usePageBottom();
   const { data, fetchNextPage, hasNextPage, status } = usePoke();
 
+  useEffect(() => {
+    if (reachedBottom && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [reachedBottom, hasNextPage, fetchNextPage]);
+
   if (status === "pending") {
     return <div>Loading...</div>;
   }
-  if (reachedBottom && hasNextPage) {
-    fetchNextPage();
-  }
-
   return (
     <main>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center p-4">
