@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 
 export default function Main() {
   const reachedBottom = usePageBottom();
-  const { data, fetchNextPage, hasNextPage, status } = usePoke();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } = usePoke();
 
   useEffect(() => {
-    if (reachedBottom && hasNextPage) {
+    if (reachedBottom && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
-  }, [reachedBottom, hasNextPage, fetchNextPage]);
+  }, [reachedBottom, hasNextPage, fetchNextPage, isFetchingNextPage]);
 
   if (status === "pending") {
     return <div>Loading...</div>;
