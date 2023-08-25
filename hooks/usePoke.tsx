@@ -16,13 +16,20 @@ export default function usePoke() {
     for (const key in data.results) {
       const url = new URL(data.results[key].url);
       const index = url.pathname.split("/")[4];
-      colors[Number(index)] = fetchColor(index);
+      if (Number(index) > 10000) {
+        colors[Number(index)] = Promise.resolve("black");
+      } else {
+        colors[Number(index)] = fetchColor(index);
+      }
       data.results[key].index = index;
     }
     const colorsData = await Promise.allSettled(colors);
 
     for (const key in data.results) {
-      const color = colorsData[data.results[key].index].status === "fulfilled" ? (colorsData[data.results[key].index] as any).value : "black";
+      const color =
+        colorsData[data.results[key].index].status === "fulfilled"
+          ? (colorsData[data.results[key].index] as any).value
+          : "black";
       let twColor;
       switch (color) {
         case "white":
