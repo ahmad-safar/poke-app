@@ -20,8 +20,6 @@ export default function Main() {
     fetchNextPage();
   }
 
-  console.log(data);
-
   return (
     <main>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center p-4">
