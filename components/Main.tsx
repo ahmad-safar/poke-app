@@ -15,7 +15,7 @@ export default function Main() {
   }, [reachedBottom, hasNextPage, fetchNextPage, isFetchingNextPage]);
 
   if (status === "pending") {
-    return <div>Loading...</div>;
+    return <div className="p-5">Loading...</div>;
   }
   return (
     <main>
@@ -44,6 +44,7 @@ export default function Main() {
           });
         })}
       </div>
+      {isFetchingNextPage && <div className="px-5 mb-5">Loading...</div>}
     </main>
   );
 }
