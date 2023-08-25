@@ -19,20 +19,20 @@ export default function usePoke() {
       colors[Number(index)] = fetchColor(index);
       data.results[key].index = index;
     }
-    const colorsData = await Promise.all(colors);
+    const colorsData = await Promise.allSettled(colors);
 
     for (const key in data.results) {
-      const color = colorsData[data.results[key].index];
-      let twColor
+      const color = colorsData[data.results[key].index].status === "fulfilled" ? (colorsData[data.results[key].index] as any).value : "black";
+      let twColor;
       switch (color) {
         case "white":
-          twColor = "white"
+          twColor = "white";
           break;
         case "black":
-          twColor = "gray-400"
+          twColor = "gray-400";
           break;
         default:
-          twColor = color + "-400"
+          twColor = color + "-400";
           break;
       }
       data.results[key].color = twColor;
