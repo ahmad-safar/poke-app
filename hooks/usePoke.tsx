@@ -3,7 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 export default function usePoke() {
   const fetchPoke = async ({ pageParam = 0 }) => {
     const res = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?limit=5&offset=" + pageParam
+      "https://pokeapi.co/api/v2/pokemon?limit=20&offset=" + pageParam
     );
     const data = await res.json();
     data.results = data.results.map((poke: any) => {
