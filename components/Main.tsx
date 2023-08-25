@@ -37,7 +37,11 @@ export default function Main() {
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.index}.png`}
                   alt={poke.name}
                 />
-                <p className={poke.color == 'white' ? "text-black" : "text-white"}>
+                <p
+                  className={
+                    poke.color == "white" ? "text-black" : "text-white"
+                  }
+                >
                   {poke.name}
                 </p>
               </div>
