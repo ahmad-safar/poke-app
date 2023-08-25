@@ -41,7 +41,7 @@ export default function usePoke() {
   };
 
   return useInfiniteQuery({
-    queryKey: ["projects"],
+    queryKey: ["pokes"],
     queryFn: fetchPoke,
     getNextPageParam: (lastPage) => {
       const url = new URL(lastPage.next);
