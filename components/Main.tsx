@@ -7,12 +7,6 @@ export default function Main() {
   const reachedBottom = usePageBottom();
   const { data, fetchNextPage, hasNextPage, status } = usePoke();
 
-  const fetchColor = async (index: string) => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-color/${index}`);
-    const data = await res.json();
-    return data.name;
-  };
-
   if (status === "pending") {
     return <div>Loading...</div>;
   }
