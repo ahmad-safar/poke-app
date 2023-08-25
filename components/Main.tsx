@@ -16,7 +16,7 @@ export default function Main() {
 
   return (
     <main>
-      <div className="grid grid-cols-4 gap-4 text-center p-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center p-4">
         {data!.pages.map((page) => {
           return page.results.map((poke: any) => {
             return (
