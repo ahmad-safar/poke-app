@@ -31,6 +31,7 @@ const config: Config = {
   },
   safelist: [
     "bg-white",
+    "bg-black",
     "bg-red-400",
     "bg-green-400",
     "bg-blue-400",
