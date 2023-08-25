@@ -16,7 +16,19 @@ export default function usePoke() {
       const url = new URL(data.results[key].url);
       const index = url.pathname.split("/")[4];
       const color = await fetchColor(index);
-      data.results[key].color = color;
+      let twColor
+      switch (color) {
+        case "white":
+          twColor = "white"
+          break;
+        case "black":
+          twColor = "gray-400"
+          break;
+        default:
+          twColor = color + "-400"
+          break;
+      }
+      data.results[key].color = twColor;
       data.results[key].index = index;
     }
     return data;

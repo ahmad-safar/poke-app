@@ -22,9 +22,7 @@ export default function Main() {
             return (
               <div
                 key={poke.index}
-                className={`bg-${
-                  poke.color == "white" ? poke.color : poke.color + "-400"
-                } rounded-lg p-2`}
+                className={`bg-${poke.color} rounded-lg p-2`}
               >
                 <img
                   key={poke.index}
