@@ -7,12 +7,20 @@ export default function Main() {
   const reachedBottom = usePageBottom();
   const { data, fetchNextPage, hasNextPage, status } = usePoke();
 
+  const fetchColor = async (index: string) => {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-color/${index}`);
+    const data = await res.json();
+    return data.name;
+  };
+
   if (status === "pending") {
     return <div>Loading...</div>;
   }
   if (reachedBottom && hasNextPage) {
     fetchNextPage();
   }
+
+  console.log(data);
 
   return (
     <main>
@@ -22,7 +30,9 @@ export default function Main() {
             return (
               <div
                 key={poke.index}
-                className={`bg-green-400 rounded-lg p-2`}
+                className={`bg-${
+                  poke.color == "white" ? poke.color : poke.color + "-400"
+                } rounded-lg p-2`}
               >
                 <img
                   key={poke.index}
