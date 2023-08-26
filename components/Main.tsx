@@ -21,7 +21,7 @@ export default function Main() {
     <main>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center p-4">
         {data!.pages.map((page) => {
-          return page.results.map((poke: any) => {
+          return page.results.map((poke) => {
             return (
               <div
                 key={poke.index}
