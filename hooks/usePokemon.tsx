@@ -9,7 +9,7 @@ export default function usePokemon() {
       if (!lastPage.next) return undefined;
       const url = new URL(lastPage.next);
       const offset = url.searchParams.get("offset");
-      return offset as any;
+      return offset!;
     },
     defaultPageParam: "0",
   });
