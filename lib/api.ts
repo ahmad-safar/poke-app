@@ -44,7 +44,7 @@ const fetchPokemon = async ({ pageParam = "0" }) => {
 
     const colorsData = await Promise.allSettled(colorPromises);
 
-    data.results.forEach((result: any, index: any) => {
+    data.results.forEach((result, index) => {
       const color =
         colorsData[index].status === "fulfilled"
           ? (colorsData[index] as any).value
@@ -63,7 +63,7 @@ const fetchPokemon = async ({ pageParam = "0" }) => {
           break;
       }
 
-      result.index = result.url.split("/")[6];
+      result.index = Number(result.url.split("/")[6]);
       result.color = twColor;
     });
 
