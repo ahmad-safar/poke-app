@@ -17,7 +17,7 @@ const DEFAULT_DATA_LIMIT = 20;
 const fetchColor = async (index: number) => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${index}`
+      `https://pokeapi.co/api/v2/pokemon-species/${index}`,
     );
     const data = await response.json();
     return data.color.name;
@@ -30,7 +30,7 @@ const fetchColor = async (index: number) => {
 const fetchPokemon = async ({ pageParam }: { pageParam: string }) => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${DEFAULT_DATA_LIMIT}&offset=${pageParam}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${DEFAULT_DATA_LIMIT}&offset=${pageParam}`,
     );
     const data = (await response.json()) as PokemonResponse;
 
