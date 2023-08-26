@@ -7,8 +7,8 @@ export default function usePokemon() {
     queryFn: fetchPokemon,
     getNextPageParam: (lastPage) => {
       if (!lastPage.next) return undefined;
-      const url = new URL(lastPage.next);
-      const offset = url.searchParams.get("offset");
+      const nextPageUrl = new URL(lastPage.next);
+      const offset = nextPageUrl.searchParams.get("offset");
       return offset!;
     },
     defaultPageParam: "0",
