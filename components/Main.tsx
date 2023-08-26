@@ -1,12 +1,13 @@
 "use client";
 
 import usePageBottom from "@/hooks/usePageBottom";
-import usePokemon from '@/hooks/usePokemon';
-import { useEffect } from 'react';
+import usePokemon from "@/hooks/usePokemon";
+import { useEffect } from "react";
 
 export default function Main() {
   const reachedBottom = usePageBottom();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } = usePokemon();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    usePokemon();
 
   useEffect(() => {
     if (reachedBottom && hasNextPage && !isFetchingNextPage) {
@@ -31,7 +32,7 @@ export default function Main() {
                   key={poke.index}
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.index}.png`}
                   alt={poke.name}
-                  placeholder='blur'
+                  placeholder="blur"
                 />
                 <p
                   className={

@@ -1,4 +1,4 @@
-import { fetchPokemon } from '@/lib/api';
+import { fetchPokemon } from "@/lib/api";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export default function usePokemon() {
