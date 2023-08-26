@@ -25,7 +25,7 @@ const fetchColor = async (index: number) => {
   }
 };
 
-const fetchPokemon = async ({ pageParam = "0" }) => {
+const fetchPokemon = async ({ pageParam }: { pageParam: string }) => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${pageParam}`
