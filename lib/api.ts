@@ -1,10 +1,3 @@
-type Pokemon = {
-  name: string;
-  url: string;
-  index: number;
-  color: string;
-};
-
 type PokemonResponse = {
   count: number;
   next: string;
@@ -14,7 +7,7 @@ type PokemonResponse = {
 
 const DEFAULT_DATA_LIMIT = 20;
 
-const fetchColor = async (index: number) => {
+const fetchColor = async (index: number): Promise<string> => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon-species/${index}`,
@@ -34,11 +27,12 @@ const fetchPokemon = async ({ pageParam }: { pageParam: string }) => {
     );
     const data = (await response.json()) as PokemonResponse;
 
-    const colorPromises = data.results.map((result) => {
+    const colorPromises = data.results.map(async (result) => {
       const url = new URL(result.url);
       const index = Number(url.pathname.split("/")[4]);
-      if (Number(index) > 10000) {
-        return Promise.resolve("black");
+
+      if (Number.isNaN(index) || index > 10000) {
+        return "black";
       } else {
         return fetchColor(index);
       }
@@ -49,10 +43,10 @@ const fetchPokemon = async ({ pageParam }: { pageParam: string }) => {
     data.results.forEach((result, index) => {
       const color =
         colorsData[index].status === "fulfilled"
-          ? (colorsData[index] as any).value
+          ? (colorsData[index] as PromiseFulfilledResult<string>).value
           : "black";
 
-      let twColor;
+      let twColor: string;
       switch (color) {
         case "white":
           twColor = "white";
