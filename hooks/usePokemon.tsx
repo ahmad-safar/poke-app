@@ -12,5 +12,6 @@ export default function usePokemon() {
       return offset!;
     },
     defaultPageParam: "0",
+    suspense: true,
   });
 }

@@ -8,18 +8,13 @@ import Loading from "./Loading";
 
 export default function Main() {
   const reachedBottom = usePageBottom();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    usePokemon();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = usePokemon();
 
   useEffect(() => {
     if (reachedBottom && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
   }, [reachedBottom, hasNextPage, fetchNextPage, isFetchingNextPage]);
-
-  if (status === "pending") {
-    return <Loading className="mx-auto p-5" />;
-  }
 
   const renderPokemons = () => {
     return data!.pages.map((page) =>
