@@ -6,7 +6,7 @@ export default function Loading({ className }: LoadingProps) {
   return (
     <div className={`flex justify-center ${className}`}>
       <svg
-        className="animate-spin h-10 w-10 text-white"
+        className="animate-spin h-10 w-10 text-black dark:text-white"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
