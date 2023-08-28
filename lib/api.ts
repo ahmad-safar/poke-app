@@ -12,6 +12,8 @@ const fetchColor = async (index: number): Promise<string> => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon-species/${index}`,
     );
+    if (!response.ok) throw new Error("Response not ok");
+
     const data = await response.json();
     return data.color.name;
   } catch (error) {
@@ -25,6 +27,8 @@ const fetchPokemon = async ({ pageParam }: { pageParam: string }) => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=${DEFAULT_DATA_LIMIT}&offset=${pageParam}`,
     );
+    if (!response.ok) throw new Error("Response not ok");
+
     const data = (await response.json()) as PokemonResponse;
 
     const colorPromises = data.results.map(async (result) => {

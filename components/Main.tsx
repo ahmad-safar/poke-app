@@ -8,7 +8,8 @@ import Loading from "./Loading";
 
 export default function Main() {
   const reachedBottom = usePageBottom();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = usePokemon();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
+    usePokemon();
 
   useEffect(() => {
     if (reachedBottom && hasNextPage && !isFetchingNextPage) {
